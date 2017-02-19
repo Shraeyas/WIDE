@@ -1,0 +1,237 @@
+<html>
+
+	<head>
+	
+		<script src="jquery.js"></script>
+		<style type="text/css"></style>
+		
+		<title>W IDE</title>
+	
+	</head>
+	
+	
+	<body>
+		
+		<div id="logo">
+		
+			<img src="logo_1.png" width=180px height=70px>
+				
+				
+				
+		</div>
+		
+		<div id="about">
+			
+			<a href="about.html"><img src="about.png" width=150px height=60px></a>
+			
+		</div>
+		
+		<div id="topbar">
+			<div id="toggle">
+				<button class="btn" id="th">HTML</button>
+				<button class="btn" id="tc">CSS</button>
+				<button class="btn" id="tj">JavaScript</button>
+				<button class="btn" id="to">Output</button>
+			</div>
+		
+			
+		</div>
+		
+		
+		<div id="code">
+		
+			<div id="sh">
+			<textarea id="htmlcontent" class="pane"><p id='p1'>Hello HTML</p></textarea>
+			<textarea id="csscontent" class="pane">Hello CSS</textarea>
+			</div>
+			
+			<textarea id="jscontent" class="pane">Hello JavaScript</textarea>
+			
+			
+			<iframe id="outputcontent" class="pane"></iframe>
+			
+			
+	
+		<style>
+		
+			.pane
+			{
+				float:left;
+				height:80%;
+				width:20%;
+				resize:none;
+			}
+			
+			#outputcontent
+			{
+				
+				float:right;
+			}
+			
+			textarea
+			{
+				resize:none;
+			}
+			
+			
+			#logo
+			{
+				float:left;
+			
+			}
+			
+			#about
+			{
+				float:right;
+			}
+			
+			#topbar
+			{
+				background-color:#99D9EA;
+				height:75px;
+			}
+			
+			#toggle
+			{
+				margin:0 auto;
+				width:300px;
+				padding-top:25px;
+			}	
+			
+			.btn
+			{
+				float:left;
+				background-color:white;
+				
+			}
+		
+		</style>
+		
+		<script>
+		
+		function update()
+		{
+			$("#outputcontent").contents().find("html").html("<html><head><style type = 'text/css'>" + $("#csscontent").val() + "</style></head><body>" + $("#htmlcontent").val() + "</body></html>");
+			
+			
+		}
+		
+		function jsup()
+		{
+			document.getElementById("outputcontent").contentWindow.eval($("#jscontent").val());
+			
+		}
+		
+		$(".pane").hide();
+		
+		//$("#outputcontent").contents().find("html").html($("#htmlcontent").val());
+		
+		
+		update();
+	
+		var th = 1;
+		 $("#th").click
+		 (
+				
+				function()
+				{
+					if(th == 1)
+					{
+						$(this).css("background-color", "yellow");
+						th = 0;
+						$("#htmlcontent").show();
+						
+					}
+					
+					else
+					{
+						$(this).css("background-color", "white");
+						$("#htmlcontent").hide();
+						th = 1;
+					}
+				}
+		 );
+		 
+		 var tc = 1;
+		 $("#tc").click
+		 (
+				function()
+				{
+					if(tc == 1)
+					{
+						$(this).css("background-color", "green");
+						tc = 0;
+						$("#csscontent").show();
+					}
+					
+					else
+					{
+						$(this).css("background-color", "white");
+						tc = 1;
+						$("#csscontent").hide();
+					}
+				}
+		 );
+		 
+		 var tj = 1;
+		 $("#tj").click
+		 (
+				function()
+				{
+					if(tj == 1)
+					{
+						$(this).css("background-color", "blue");
+						tj = 0;
+						$("#jscontent").show();
+					}
+					
+					else
+					{
+						$(this).css("background-color", "white");
+						tj = 1;
+						$("#jscontent").hide();
+					}
+				}
+		 );
+		 
+		 var to = 1;
+		 $("#to").click
+		 (
+				function()
+				{
+					if(to == 1)
+					{
+						$(this).css("background-color", "red");
+						to = 0;
+						$("#outputcontent").show();
+					}
+					
+					else
+					{
+						$(this).css("background-color", "white");
+						to = 1;
+						$("#outputcontent").hide();
+					}
+				}
+		 );
+		 
+		 
+		 
+		$("#sh").on('change keyup paste', function() 
+		{
+			update();
+			
+		});
+		
+		$("#jscontent").on('change keyup paste', function() 
+		{
+			jsup();
+			
+		});
+		
+		</script>
+		
+		
+	</body>
+
+</html>
